@@ -11,7 +11,7 @@ class BowlingGame:
         self.game.append(frame)
 
     def get_frame_at(self, i: int) -> Frame:
-        if 0 <= i < len(self.game):
+        if i < len(self.game):
             return self.game[i]
         raise BowlingError
 
@@ -25,14 +25,18 @@ class BowlingGame:
                 if self.get_frame_at(i + 1).is_strike():
                     score += self.get_frame_at(i + 2).get_first_throw()
             elif frame.is_spare():
-                 score += self.get_frame_at(i + 1).get_first_throw()
+                if i is not len(self.game) - 1:
+                    score += self.get_frame_at(i + 1).get_first_throw()
             score += frame.score()
             i += 1
 
         return score
 
     def set_first_bonus_throw(self, bonus_throw: int) -> None:
-        pass
+        if self.get_frame_at(-1).is_spare():
+            self.game[-1].set_bonus(bonus_throw)
+        else:
+            raise BowlingError
 
     def set_second_bonus_throw(self, bonus_throw: int) -> None:
         pass
