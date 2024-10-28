@@ -106,3 +106,17 @@ class TestBowlingGame(unittest.TestCase):
         bowling_game.add_frame(Frame(8, 1))
         bowling_game.add_frame(Frame(2, 6))
         self.assertEqual(112, bowling_game.calculate_score())
+
+    def test_game_with_two_spare_is_98(self):
+        bowling_game = BowlingGame()
+        bowling_game.add_frame(Frame(8, 2))
+        bowling_game.add_frame(Frame(5, 5))
+        bowling_game.add_frame(Frame(7, 2))
+        bowling_game.add_frame(Frame(3, 6))
+        bowling_game.add_frame(Frame(4, 4))
+        bowling_game.add_frame(Frame(5, 3))
+        bowling_game.add_frame(Frame(3, 3))
+        bowling_game.add_frame(Frame(4, 5))
+        bowling_game.add_frame(Frame(8, 1))
+        bowling_game.add_frame(Frame(2, 6))
+        self.assertEqual(98, bowling_game.calculate_score())
