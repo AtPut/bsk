@@ -5,10 +5,10 @@ from frame import Frame
 class BowlingGame:
 
     def __init__(self):
-        pass
+        self.game = []
     
     def add_frame(self, frame: Frame) -> None:
-        pass
+        self.game.append(frame)
 
     def get_frame_at(self, i: int) -> Frame:
         pass
