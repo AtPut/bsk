@@ -20,9 +20,11 @@ class BowlingGame:
         i = 0
         while i < len(self.game):
             frame = self.get_frame_at(i)
-            score += frame.score()
-            if frame.is_spare():
+            if frame.is_strike():
+                score += self.get_frame_at(i + 1).score()
+            elif frame.is_spare():
                  score += self.get_frame_at(i + 1).get_first_throw()
+            score += frame.score()
             i += 1
 
         return score
