@@ -17,8 +17,14 @@ class BowlingGame:
 
     def calculate_score(self) -> int:
         score = 0
-        for frame in self.game:
+        i = 0
+        while i < len(self.game):
+            frame = self.get_frame_at(i)
             score += frame.score()
+            if frame.is_spare():
+                 score += self.get_frame_at(i + 1).get_first_throw()
+            i += 1
+
         return score
 
     def set_first_bonus_throw(self, bonus_throw: int) -> None:
